@@ -1,9 +1,4 @@
 module Types
-  class ReferencesType < BaseNode
-    field :users, [UserType], null: true
-    field :votes, [VoteType], null: true
-  end
-
   class QueryType < BaseObject
     field :all_links, resolver: Resolvers::LinksSearch
 
@@ -18,12 +13,12 @@ module Types
       {
         users: links.then do |links|
                   RecordLoader.for(User).load_many(
-                    links.map(&:user_id)
+                    links.map(&:user_id).uniq
                   )
                end,
         votes: links.then do |links|
                  RecordLoader.for(Vote).load_many(
-                   Vote.where(link_id: links.map(&:id)).pluck(:id)
+                   Vote.where(link_id: links.map(&:id).uniq).pluck(:id)
                  )
                end
       }
