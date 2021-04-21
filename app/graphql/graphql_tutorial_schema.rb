@@ -1,6 +1,9 @@
+require 'graphql/batch'
+
 class GraphqlTutorialSchema < GraphQL::Schema
   query Types::QueryType
   mutation Types::MutationType
+  use GraphQL::Batch
 
   def self.resolve_type(_type, object, _ctx)
     type_class = "::Types::#{object.class}Type".safe_constantize

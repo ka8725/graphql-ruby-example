@@ -3,7 +3,7 @@ module Types
     field :created_at, DateTimeType, null: false
     field :url, String, null: false
     field :description, String, null: false
-    field :posted_by, UserType, null: false, method: :user
-    field :votes, [Types::VoteType], null: false
+    field :userId, Integer, null: false
+    field :voteIds, [Integer], null: false
   end
 end
