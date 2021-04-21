@@ -1,7 +1,5 @@
 module Types
   class QueryType < BaseObject
-    field :all_links, resolver: Resolvers::LinksSearch
-
     field :links, [LinkType], null: false
     field :references, ReferencesType, null: true
 
