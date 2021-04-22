@@ -6,5 +6,7 @@ module Types
     field :description, String, null: false
     field :userId, Integer, null: false
     field :voteIds, [Integer], null: false
+    field :user, UserType, null: false
+    field :votes, [VoteType], null: false
   end
 end

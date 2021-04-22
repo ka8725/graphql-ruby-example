@@ -3,6 +3,14 @@ module Types
     field :links, [LinkType], null: false
     field :references, ReferencesType, null: true
 
+    field :links2, LinksType, null: false
+
+    def links2
+      {
+        nodes: Link.all
+      }
+    end
+
     def links
       RecordLoader.for(Link).load_many(Link.pluck(:id))
     end
