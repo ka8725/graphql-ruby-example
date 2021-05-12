@@ -1,9 +1,9 @@
 module Types
   class LinksType < BaseObject
-    field :nodes, [LinkType], null: false
-    field :edges, LinkEdgesType, null: false
+    field :records, [LinkType], null: false
+    field :refs, LinkRefsType, null: false
 
-    def edges
+    def refs
       object
     end
   end
